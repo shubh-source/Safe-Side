@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@drawable/bg_sos_gradient">
+
+    <!-- Pulsing SOS -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🚨"
+        android:textSize="72sp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SOS ALERT"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:letterSpacing="0.15"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="She needs you right now"
+        android:textSize="16sp"
+        android:textColor="#FFCCCC"
+        android:layout_marginBottom="32dp"/>
+
+    <!-- Location card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#33FFFFFF"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        android:layout_marginBottom="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LIVE LOCATION"
+                android:textSize="11sp"
+                android:textColor="#FFCCCC"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍 Fetching location…"
+                android:textSize="14sp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Buttons -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCallNow"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="📞  Call Her Now"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:backgroundTint="#CC2222"
+        app:cornerRadius="16dp"
+        android:layout_marginBottom="12dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOpenMap"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="🗺️  Open Live Map"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:backgroundTint="#33FFFFFF"
+        app:cornerRadius="14dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp"
+        android:layout_marginBottom="12dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDismiss"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Dismiss SOS"
+        android:textSize="14sp"
+        android:textColor="#AAAAAA"
+        android:backgroundTint="#22FFFFFF"
+        app:cornerRadius="12dp"/>
+
+</LinearLayout>

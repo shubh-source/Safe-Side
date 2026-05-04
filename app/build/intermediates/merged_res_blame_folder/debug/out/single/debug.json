@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-merged_res-42:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-main-44:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-merged_res-42:\\layout_activity_protected_home.xml.flat",
+        "source": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-main-44:\\layout\\activity_protected_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-merged_res-42:\\drawable_bg_protected_gradient.xml.flat",
+        "source": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-main-44:\\drawable\\bg_protected_gradient.xml"
+    },
+    {
+        "merged": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-merged_res-42:\\drawable_bg_guardian_gradient.xml.flat",
+        "source": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-main-44:\\drawable\\bg_guardian_gradient.xml"
+    },
+    {
+        "merged": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-merged_res-42:\\layout_activity_setup.xml.flat",
+        "source": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-main-44:\\layout\\activity_setup.xml"
+    },
+    {
+        "merged": "com.safesignal.app-merged_res-42:/layout_activity_main.xml.flat",
+        "source": "com.safesignal.app-main-44:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-merged_res-42:\\drawable_ic_shield.xml.flat",
+        "source": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-main-44:\\drawable\\ic_shield.xml"
+    },
+    {
+        "merged": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-merged_res-42:\\drawable_bg_sos_gradient.xml.flat",
+        "source": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-main-44:\\drawable\\bg_sos_gradient.xml"
+    },
+    {
+        "merged": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-merged_res-42:\\layout_activity_sos_alert.xml.flat",
+        "source": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-main-44:\\layout\\activity_sos_alert.xml"
+    },
+    {
+        "merged": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-merged_res-42:\\layout_activity_guardian_home.xml.flat",
+        "source": "C:\\Users\\shubh\\.gradle\\daemon\\8.2\\com.safesignal.app-main-44:\\layout\\activity_guardian_home.xml"
+    }
+]

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_dark">#0D0D1A</color>
+    <color name="black">#FF000000</color>
+    <color name="blue_light">#93C5FD</color>
+    <color name="card_bg">#1A1A2E</color>
+    <color name="guardian_blue">#1D4ED8</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="purple_dark">#4C1D95</color>
+    <color name="purple_light">#C4B5FD</color>
+    <color name="purple_primary">#7C3AED</color>
+    <color name="sos_red">#DC2626</color>
+    <color name="sos_red_dark">#7F1D1D</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="text_secondary">#9CA3AF</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">SafeSignal</string>
+    <string name="gcm_defaultSenderId" translatable="false">554850853850</string>
+    <string name="google_api_key" translatable="false">AIzaSyDpfIMOfr7yB_ZhSi3Yt2Jw0qhAEwGX7Cc</string>
+    <string name="google_app_id" translatable="false">1:554850853850:android:b4fdac48a09d49447256e3</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDpfIMOfr7yB_ZhSi3Yt2Jw0qhAEwGX7Cc</string>
+    <string name="google_storage_bucket" translatable="false">safeside-2cfff.firebasestorage.app</string>
+    <string name="placeholder">REPLACE_WITH_REAL_google-services.json</string>
+    <string name="project_id" translatable="false">safeside-2cfff</string>
+    <style name="Theme.SafeSignal" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/purple_primary</item>
+        <item name="colorPrimaryVariant">@color/purple_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSurface">@color/bg_dark</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:navigationBarColor">@color/bg_dark</item>
+    </style>
+    <style name="Theme.SafeSignal.Transparent" parent="Theme.SafeSignal">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>

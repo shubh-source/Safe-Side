@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Backgrounds -->
+    <color name="bg_dark">#0D0D1A</color>
+    <color name="card_bg">#1A1A2E</color>
+
+    <!-- Purple (Her / Protected) -->
+    <color name="purple_primary">#7C3AED</color>
+    <color name="purple_light">#C4B5FD</color>
+    <color name="purple_dark">#4C1D95</color>
+
+    <!-- Blue (Guardian) -->
+    <color name="guardian_blue">#1D4ED8</color>
+    <color name="blue_light">#93C5FD</color>
+
+    <!-- SOS Red -->
+    <color name="sos_red">#DC2626</color>
+    <color name="sos_red_dark">#7F1D1D</color>
+
+    <!-- Text -->
+    <color name="white">#FFFFFF</color>
+    <color name="text_secondary">#9CA3AF</color>
+
+    <!-- Material defaults -->
+    <color name="black">#FF000000</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+</resources>

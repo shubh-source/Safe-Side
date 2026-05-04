@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Network -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <!-- Location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+
+    <!-- Phone call -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <!-- Services -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
+
+    <!-- Wake + Screen -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.TURN_SCREEN_ON"/>
+
+    <!-- Boot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <!-- Notifications + Overlay -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+
+    <application
+        android:name=".SafeSignalApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_shield"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SafeSignal"
+        android:usesCleartextTraffic="true">
+
+        <!-- Main entry -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Setup -->
+        <activity
+            android:name=".SetupActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- Her home screen -->
+        <activity
+            android:name=".ProtectedHomeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- His home screen -->
+        <activity
+            android:name=".GuardianHomeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- SOS alert - full screen, shown even on lock screen -->
+        <activity
+            android:name=".SosAlertActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:showOnLockScreen="true"
+            android:turnScreenOn="true"
+            android:launchMode="singleTop"/>
+
+        <!-- 4-blink confirmation on her phone -->
+        <activity
+            android:name=".SosBlinkActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:showOnLockScreen="true"
+            android:turnScreenOn="true"
+            android:theme="@style/Theme.SafeSignal.Transparent"/>
+
+        <!-- Power button monitoring service (her phone) -->
+        <service
+            android:name=".service.PowerButtonService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync"/>
+
+        <!-- Guardian listener service (his phone) -->
+        <service
+            android:name=".service.GuardianListenerService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync"/>
+
+        <!-- Location streaming service (her phone, active during SOS) -->
+        <service
+            android:name=".service.LocationService"
+            android:exported="false"
+            android:foregroundServiceType="location"/>
+
+        <!-- Boot receiver to restart services -->
+        <receiver
+            android:name=".BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

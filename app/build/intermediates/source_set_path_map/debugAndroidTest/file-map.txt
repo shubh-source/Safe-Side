@@ -1,0 +1,4 @@
+com.safesignal.test.app-androidTest-0 C:\projects\safeside\SafeSignal\app\build\generated\res\resValues\androidTest\debug
+com.safesignal.test.app-mergeDebugAndroidTestResources-1 C:\projects\safeside\SafeSignal\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.safesignal.test.app-mergeDebugAndroidTestResources-2 C:\projects\safeside\SafeSignal\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.safesignal.test.app-merged_res-3 C:\projects\safeside\SafeSignal\app\build\intermediates\merged_res\debugAndroidTest
