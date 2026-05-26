@@ -55,9 +55,11 @@
             android:padding="24dp">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPairCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Pair Code"
+                app:placeholderText="e.g. Christine0109"
                 app:boxBackgroundColor="@color/glass_bg"
                 app:boxStrokeColor="@color/accent_gold"
                 app:hintTextColor="@color/text_secondary"
@@ -72,8 +74,7 @@
                     android:textStyle="bold"
                     android:gravity="center"
                     android:letterSpacing="0.1"
-                    android:inputType="textVisiblePassword"
-                    android:hint="e.g. Christine0109"/>
+                    android:inputType="textVisiblePassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>

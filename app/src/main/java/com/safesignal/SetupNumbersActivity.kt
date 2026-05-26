@@ -21,7 +21,7 @@ class SetupNumbersActivity : AppCompatActivity() {
         val isProtected = prefs.role == "protected"
         if (!isProtected) {
             // Guardian label tweaks
-            binding.etPartnerNumber.hint = "Protected person's number"
+            binding.tilPartnerNumber.hint = "Protected person's number"
         }
 
         binding.btnNext.setOnClickListener {

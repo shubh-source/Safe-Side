@@ -58,9 +58,11 @@
 
                 <!-- My Number -->
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilMyNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Your Phone Number"
+                    app:placeholderText="+91 00000 00000"
                     app:boxBackgroundColor="@color/glass_bg"
                     app:boxStrokeColor="@color/accent_gold"
                     app:hintTextColor="@color/text_secondary"
@@ -71,15 +73,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
-                        android:inputType="phone"
-                        android:hint="+91 00000 00000"/>
+                        android:inputType="phone"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Partner Number -->
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPartnerNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Your Guardian's Number"
+                    app:placeholderText="+91 00000 00000"
                     app:boxBackgroundColor="@color/glass_bg"
                     app:boxStrokeColor="@color/accent_purple"
                     app:hintTextColor="@color/text_secondary"
@@ -89,8 +92,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
-                        android:inputType="phone"
-                        android:hint="+91 00000 00000"/>
+                        android:inputType="phone"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
