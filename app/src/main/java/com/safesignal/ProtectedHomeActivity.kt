@@ -14,10 +14,14 @@ import com.safesignal.databinding.ActivityProtectedHomeBinding
 import com.safesignal.service.PowerButtonService
 import com.safesignal.util.PrefManager
 
+import com.safesignal.util.FirebaseHelper
+import android.graphics.Color
+
 class ProtectedHomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProtectedHomeBinding
     private val prefs by lazy { PrefManager(this) }
+    private var firebaseListener: Any? = null
 
     private val permLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -31,13 +35,26 @@ class ProtectedHomeActivity : AppCompatActivity() {
         binding = ActivityProtectedHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tvPairCode.text = "Pair Code: ${prefs.pairCode}"
-        binding.tvGuardian.text = "Guardian: ${prefs.partnerNumber}"
+        binding.tvPairCode.text = "Code: ${prefs.pairCode}"
+        binding.tvGuardian.text = "Partner: ${prefs.partnerNumber}"
 
         requestPermissionsAndStart()
 
         binding.btnTestSOS.setOnClickListener {
-            Toast.makeText(this, "Test: Press power button 4 times quickly", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Test: Press power button 3 times", Toast.LENGTH_LONG).show()
+        }
+
+        // Start listening to live connection status
+        firebaseListener = FirebaseHelper.listenForPairingSuccess(prefs.pairCode) { partnerNum ->
+            // Update UI dynamically when Guardian connects
+            runOnUiThread {
+                binding.ivStatusIcon.setImageResource(R.drawable.ic_check_vlynxly)
+                binding.ivStatusIcon.setColorFilter(Color.parseColor("#6ECFA0"))
+                binding.tvStatus.text = "Successfully Linked!"
+                binding.tvStatus.setTextColor(Color.parseColor("#6ECFA0"))
+                binding.tvGuardian.text = "Guardian: $partnerNum"
+                binding.cardLinkStatus.strokeColor = Color.parseColor("#6ECFA0")
+            }
         }
     }
 
@@ -81,12 +98,16 @@ class ProtectedHomeActivity : AppCompatActivity() {
         } else {
             startService(intent)
         }
-        binding.tvStatus.text = "🟢 Protection Active"
     }
 
     override fun onResume() {
         super.onResume()
         // Ensure service is still running
         startProtectionService()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        firebaseListener?.let { FirebaseHelper.removePairingListener(prefs.pairCode, it) }
     }
 }

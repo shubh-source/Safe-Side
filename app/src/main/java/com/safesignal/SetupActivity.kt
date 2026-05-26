@@ -24,7 +24,7 @@ class SetupActivity : AppCompatActivity() {
         val isProtected = prefs.role == "protected"
 
         // Show the correct label
-        binding.tvRoleLabel.text = if (isProtected) "💜 You are being Protected" else "🛡️ You are the Guardian"
+        binding.tvRoleLabel.text = if (isProtected) "You are being Protected" else "You are the Guardian"
         binding.tvPairCodeHint.text = if (isProtected)
             "Share this code with your guardian"
         else

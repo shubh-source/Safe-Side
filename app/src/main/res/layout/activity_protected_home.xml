@@ -5,64 +5,88 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="32dp"
-    android:background="@drawable/bg_protected_gradient">
+    android:padding="24dp"
+    android:background="@color/bg_dark">
 
-    <!-- Heartbeat pulse icon -->
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_heart_vlynxly"
+        app:tint="@color/accent_gold"
+        android:layout_marginBottom="24dp"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="💜"
-        android:textSize="72sp"
-        android:layout_marginBottom="16dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="You are Safe"
+        android:text="You are Protected"
         android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        android:fontFamily="serif"
+        android:textColor="@color/accent_gold"
         android:layout_marginBottom="8dp"/>
 
     <TextView
-        android:id="@+id/tvStatus"
+        android:id="@+id/tvProtectionStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Starting protection…"
+        android:text="Protection is active in background"
         android:textSize="15sp"
-        android:textColor="@color/purple_light"
-        android:layout_marginBottom="40dp"/>
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/accent_purple"
+        android:layout_marginBottom="32dp"/>
 
-    <!-- Info Card -->
+    <!-- Link Status Card -->
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardLinkStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/card_bg"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="0dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/glass_border"
         android:layout_marginBottom="24dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="center"
             android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/ivStatusIcon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_check_vlynxly"
+                app:tint="@color/text_secondary"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Waiting for Guardian..."
+                android:textColor="@color/text_secondary"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-light"
+                android:textSize="18sp"
+                android:layout_marginBottom="4dp"/>
 
             <TextView
                 android:id="@+id/tvPairCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="15sp"
-                android:layout_marginBottom="8dp"/>
-
+                android:textSize="14sp"
+                android:alpha="0.8"
+                android:layout_marginBottom="4dp"/>
+                
             <TextView
                 android:id="@+id/tvGuardian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_secondary"
-                android:textSize="14sp"/>
+                android:textSize="13sp"/>
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -70,21 +94,23 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Press power button 4× quickly to send SOS"
-        android:textSize="13sp"
+        android:text="Press power button 3× to send SOS"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-light"
         android:textColor="@color/text_secondary"
         android:gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="24dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnTestSOS"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="How to Test"
-        android:textColor="@color/purple_light"
+        android:layout_height="56dp"
+        android:text="How to Test Alert"
+        android:textSize="16sp"
+        android:textColor="@color/accent_purple"
         android:backgroundTint="@color/card_bg"
-        app:cornerRadius="12dp"
-        app:strokeColor="@color/purple_primary"
+        app:cornerRadius="16dp"
+        app:strokeColor="@color/accent_purple"
         app:strokeWidth="1dp"/>
 
 </LinearLayout>

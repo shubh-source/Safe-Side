@@ -13,10 +13,14 @@ import com.safesignal.databinding.ActivityGuardianHomeBinding
 import com.safesignal.service.GuardianListenerService
 import com.safesignal.util.PrefManager
 
+import com.safesignal.util.FirebaseHelper
+import android.graphics.Color
+
 class GuardianHomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGuardianHomeBinding
     private val prefs by lazy { PrefManager(this) }
+    private var firebaseListener: Any? = null
 
     private val permLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -30,10 +34,23 @@ class GuardianHomeActivity : AppCompatActivity() {
         binding = ActivityGuardianHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tvPairCode.text = "Pair Code: ${prefs.pairCode}"
+        binding.tvPairCode.text = "Code: ${prefs.pairCode}"
         binding.tvProtected.text = "Protecting: ${prefs.partnerNumber}"
 
         requestPermissionsAndStart()
+
+        // Start listening to live connection status
+        firebaseListener = FirebaseHelper.listenForPairingSuccess(prefs.pairCode) { partnerNum ->
+            // Update UI dynamically when linked
+            runOnUiThread {
+                binding.ivStatusIcon.setImageResource(R.drawable.ic_check_vlynxly)
+                binding.ivStatusIcon.setColorFilter(Color.parseColor("#6ECFA0"))
+                binding.tvStatus.text = "Successfully Linked!"
+                binding.tvStatus.setTextColor(Color.parseColor("#6ECFA0"))
+                binding.tvProtected.text = "Protecting: $partnerNum"
+                binding.cardLinkStatus.strokeColor = Color.parseColor("#6ECFA0")
+            }
+        }
     }
 
     private fun requestPermissionsAndStart() {
@@ -57,11 +74,16 @@ class GuardianHomeActivity : AppCompatActivity() {
         } else {
             startService(intent)
         }
-        binding.tvStatus.text = "🛡️ Guardian Active — Listening"
+        binding.tvProtectionStatus.text = "Guardian Active — Listening"
     }
 
     override fun onResume() {
         super.onResume()
         startGuardianService()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        firebaseListener?.let { FirebaseHelper.removePairingListener(prefs.pairCode, it) }
     }
 }

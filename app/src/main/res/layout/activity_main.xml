@@ -8,49 +8,60 @@
     android:padding="32dp"
     android:background="@color/bg_dark">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="💜"
-        android:textSize="64sp"
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_heart_vlynxly"
+        app:tint="@color/accent_gold"
         android:layout_marginBottom="16dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SafeSignal"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textSize="44sp"
+        android:fontFamily="serif"
+        android:textColor="@color/accent_gold"
         android:layout_marginBottom="8dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Who are you?"
+        android:text="Silent Protection &amp; Instant SOS"
         android:textSize="16sp"
+        android:fontFamily="sans-serif-light"
         android:textColor="@color/text_secondary"
-        android:layout_marginBottom="48dp"/>
+        android:layout_marginBottom="56dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnProtected"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:text="💜  I need Protection"
+        android:text="I need you"
         android:textSize="18sp"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/purple_primary"
+        android:textColor="@color/bg_dark"
+        android:backgroundTint="@color/accent_gold"
+        app:icon="@drawable/ic_heart_vlynxly"
+        app:iconTint="@color/bg_dark"
+        app:iconGravity="textStart"
         app:cornerRadius="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        app:elevation="4dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGuardian"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:text="🛡️  I am the Guardian"
+        android:text="I'm always here"
         android:textSize="18sp"
         android:textColor="@color/white"
-        android:backgroundTint="@color/guardian_blue"
-        app:cornerRadius="16dp"/>
+        android:backgroundTint="@color/card_bg"
+        app:strokeColor="@color/accent_purple"
+        app:strokeWidth="1dp"
+        app:icon="@drawable/ic_shield_vlynxly"
+        app:iconTint="@color/white"
+        app:iconGravity="textStart"
+        app:cornerRadius="16dp"
+        app:elevation="4dp"/>
 
 </LinearLayout>

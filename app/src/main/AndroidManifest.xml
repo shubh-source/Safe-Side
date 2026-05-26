@@ -42,18 +42,55 @@
         android:theme="@style/Theme.SafeSignal"
         android:usesCleartextTraffic="true">
 
-        <!-- Main entry -->
+        <!-- Splash screen - entry point -->
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SafeSignal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <!-- Setup -->
+        <!-- Role selection screen -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- Welcome screen for protected role -->
+        <activity
+            android:name=".WelcomeProtectedActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- Setup step 1: Phone Numbers -->
+        <activity
+            android:name=".SetupNumbersActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- Setup step 2: Pair Code (Protected - shows code) -->
+        <activity
+            android:name=".SetupCodeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- Setup step 2: Pair Code (Guardian - enters code) -->
+        <activity
+            android:name=".SetupCodeGuardianActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- Waiting for guardian to connect -->
+        <activity
+            android:name=".WaitingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <!-- Setup (legacy / guardian flow) -->
         <activity
             android:name=".SetupActivity"
             android:exported="false"

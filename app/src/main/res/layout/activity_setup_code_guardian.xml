@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/bg_dark"
+    android:padding="32dp">
+
+    <ImageView
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_shield_vlynxly"
+        app:tint="@color/accent_gold"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Connection Code"
+        android:textSize="28sp"
+        android:fontFamily="serif"
+        android:textColor="@color/accent_gold"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter the code shared by the\nperson you are protecting"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/text_secondary"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="40dp"/>
+
+    <!-- Code Input Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/card_bg"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/accent_gold"
+        android:layout_marginBottom="32dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pair Code"
+                app:boxBackgroundColor="@color/glass_bg"
+                app:boxStrokeColor="@color/accent_gold"
+                app:hintTextColor="@color/text_secondary"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPairCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:fontFamily="monospace"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:inputType="textVisiblePassword"
+                    android:hint="e.g. Christine0109"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnConnect"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Connect"
+        android:textSize="17sp"
+        android:textColor="@color/bg_dark"
+        android:backgroundTint="@color/accent_gold"
+        app:cornerRadius="16dp"
+        app:elevation="4dp"/>
+
+</LinearLayout>

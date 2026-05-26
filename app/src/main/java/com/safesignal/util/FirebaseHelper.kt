@@ -97,8 +97,65 @@ object FirebaseHelper {
 
     // ── Pairing ──────────────────────────────────────────────────────────────
 
-    /** Store partner phone number under this pair code */
+    private fun pairRef(pairCode: String) = db.child("pairs").child(pairCode)
+
+    /** GF registers herself under the pair code */
+    fun registerAsProtected(pairCode: String, myNumber: String) {
+        pairRef(pairCode).child("protected").setValue(myNumber)
+    }
+
+    /** Guardian registers himself under the pair code → triggers GF's waiting screen */
+    fun registerAsGuardian(pairCode: String, myNumber: String) {
+        pairRef(pairCode).child("guardian").setValue(myNumber)
+    }
+
+    /** Legacy - keep for backward compat */
     fun registerPairCode(pairCode: String, partnerNumber: String) {
-        partnerNumRef(pairCode).setValue(partnerNumber)
+        pairRef(pairCode).child("partnerNumber").setValue(partnerNumber)
+    }
+
+    /** GF's WaitingActivity listens for guardian to connect */
+    fun listenForGuardianConnect(pairCode: String, onConnected: (guardianNumber: String) -> Unit): Any {
+        val listener = object : com.google.firebase.database.ValueEventListener {
+            override fun onDataChange(snapshot: com.google.firebase.database.DataSnapshot) {
+                val guardianNumber = snapshot.getValue(String::class.java)
+                if (!guardianNumber.isNullOrEmpty()) {
+                    onConnected(guardianNumber)
+                }
+            }
+            override fun onCancelled(error: com.google.firebase.database.DatabaseError) {}
+        }
+        pairRef(pairCode).child("guardian").addValueEventListener(listener)
+        return listener
+    }
+
+    /** Home screens use this to show "Successfully Linked" */
+    fun listenForPairingSuccess(pairCode: String, onLinked: (partnerPhone: String) -> Unit): Any {
+        val listener = object : com.google.firebase.database.ValueEventListener {
+            override fun onDataChange(snapshot: com.google.firebase.database.DataSnapshot) {
+                // Check both nodes - if both exist, pairing is complete
+                val guardian = snapshot.child("guardian").getValue(String::class.java)
+                val protected = snapshot.child("protected").getValue(String::class.java)
+                val partner = guardian ?: protected
+                if (!partner.isNullOrEmpty()) {
+                    onLinked(partner)
+                }
+            }
+            override fun onCancelled(error: com.google.firebase.database.DatabaseError) {}
+        }
+        pairRef(pairCode).addValueEventListener(listener)
+        return listener
+    }
+
+    fun removePairingListener(pairCode: String, listener: Any) {
+        if (listener is com.google.firebase.database.ValueEventListener) {
+            pairRef(pairCode).removeEventListener(listener)
+        }
+    }
+
+    fun removeGuardianListener(pairCode: String, listener: Any) {
+        if (listener is com.google.firebase.database.ValueEventListener) {
+            pairRef(pairCode).child("guardian").removeEventListener(listener)
+        }
     }
 }

@@ -19,8 +19,8 @@ class PowerButtonService : Service() {
 
     private val prefs by lazy { PrefManager(this) }
     private val pressTimes = mutableListOf<Long>()
-    private val PRESS_WINDOW_MS = 2500L
-    private val REQUIRED_PRESSES = 4
+    private val PRESS_WINDOW_MS = 4000L
+    private val REQUIRED_PRESSES = 3
 
     private val screenReceiver = object : BroadcastReceiver() {
         override fun onReceive(ctx: Context, intent: Intent) {

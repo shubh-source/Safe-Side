@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Backgrounds -->
-    <color name="bg_dark">#0D0D1A</color>
-    <color name="card_bg">#1A1A2E</color>
+    <color name="bg_dark">#0D0D0F</color>
+    <color name="card_bg">#161618</color>
+    <color name="glass_bg">#05FFFFFF</color>
+    <color name="glass_border">#0DFFFFFF</color>
 
-    <!-- Purple (Her / Protected) -->
-    <color name="purple_primary">#7C3AED</color>
-    <color name="purple_light">#C4B5FD</color>
-    <color name="purple_dark">#4C1D95</color>
-
-    <!-- Blue (Guardian) -->
-    <color name="guardian_blue">#1D4ED8</color>
-    <color name="blue_light">#93C5FD</color>
+    <!-- Theme Accents (Vlynxly Theme) -->
+    <color name="accent_gold">#C9A96E</color>
+    <color name="accent_gold_dark">#A68751</color>
+    <color name="accent_purple">#7C6FCD</color>
+    <color name="accent_purple_dark">#5C50A6</color>
+    
+    <color name="purple_primary">#7C6FCD</color>
+    <color name="purple_dark">#5C50A6</color>
+    <color name="purple_light">#A39AE0</color>
+    <color name="guardian_blue">#C9A96E</color>
+    <color name="blue_light">#E0C79A</color>
 
     <!-- SOS Red -->
-    <color name="sos_red">#DC2626</color>
-    <color name="sos_red_dark">#7F1D1D</color>
+    <color name="sos_red">#E07070</color>
+    <color name="sos_red_dark">#B05050</color>
+    <color name="success">#6ECFA0</color>
 
     <!-- Text -->
-    <color name="white">#FFFFFF</color>
-    <color name="text_secondary">#9CA3AF</color>
+    <color name="white">#F0EDE8</color>
+    <color name="text_secondary">#8E8E96</color>
 
     <!-- Material defaults -->
     <color name="black">#FF000000</color>

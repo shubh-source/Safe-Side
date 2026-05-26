@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/bg_dark"
+    android:padding="32dp">
+
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/ic_heart_vlynxly"
+        app:tint="@color/accent_gold"
+        android:layout_marginBottom="32dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Waiting for your guardian"
+        android:textSize="26sp"
+        android:fontFamily="serif"
+        android:textColor="@color/accent_gold"
+        android:gravity="center"
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:id="@+id/tvWaitingSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ask your guardian to open the app\nand enter the same code"
+        android:textSize="15sp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/text_secondary"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="48dp"/>
+
+    <!-- Animated pulse ring around heart -->
+    <ProgressBar
+        android:id="@+id/progressWaiting"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:indeterminateTint="@color/accent_gold"
+        android:layout_marginBottom="48dp"/>
+
+    <View
+        android:layout_width="48dp"
+        android:layout_height="1dp"
+        android:background="@color/accent_gold"
+        android:alpha="0.3"
+        android:layout_marginBottom="32dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Code"
+        android:textSize="13sp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/text_secondary"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/tvCodeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Christine0109"
+        android:textSize="22sp"
+        android:fontFamily="monospace"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+</LinearLayout>

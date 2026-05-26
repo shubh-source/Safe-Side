@@ -26,13 +26,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnProtected.setOnClickListener {
             prefs.role = "protected"
-            startActivity(Intent(this, SetupActivity::class.java))
+            startActivity(Intent(this, WelcomeProtectedActivity::class.java))
             finish()
         }
 
         binding.btnGuardian.setOnClickListener {
             prefs.role = "guardian"
-            startActivity(Intent(this, SetupActivity::class.java))
+            startActivity(Intent(this, SetupNumbersActivity::class.java))
             finish()
         }
     }
