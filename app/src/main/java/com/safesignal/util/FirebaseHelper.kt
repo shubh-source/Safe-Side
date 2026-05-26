@@ -57,6 +57,31 @@ object FirebaseHelper {
         }
     }
 
+    /** Listens for both active/inactive SOS status and initial location details */
+    fun listenForSosStatus(pairCode: String, onStatusChanged: (active: Boolean, partnerPhone: String, lat: Double, lng: Double) -> Unit): Any {
+        val listener = object : com.google.firebase.database.ValueEventListener {
+            override fun onDataChange(snapshot: com.google.firebase.database.DataSnapshot) {
+                val active = snapshot.child("active").getValue(Boolean::class.java) ?: false
+                val partnerPhone = snapshot.child("partnerPhone").getValue(String::class.java) ?: ""
+                
+                if (active) {
+                    locationRef(pairCode).get().addOnSuccessListener { locSnap ->
+                        val lat = locSnap.child("lat").getValue(Double::class.java) ?: 0.0
+                        val lng = locSnap.child("lng").getValue(Double::class.java) ?: 0.0
+                        onStatusChanged(true, partnerPhone, lat, lng)
+                    }.addOnFailureListener {
+                        onStatusChanged(true, partnerPhone, 0.0, 0.0)
+                    }
+                } else {
+                    onStatusChanged(false, partnerPhone, 0.0, 0.0)
+                }
+            }
+            override fun onCancelled(error: com.google.firebase.database.DatabaseError) {}
+        }
+        sosRef(pairCode).addValueEventListener(listener)
+        return listener
+    }
+
     /** Deactivate SOS (optional, after 24h or manual dismiss) */
     fun deactivateSOS(pairCode: String) {
         sosRef(pairCode).child("active").setValue(false)

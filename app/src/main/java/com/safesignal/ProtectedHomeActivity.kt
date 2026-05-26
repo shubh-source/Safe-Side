@@ -63,7 +63,8 @@ class ProtectedHomeActivity : AppCompatActivity() {
         val required = listOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.POST_NOTIFICATIONS
+            Manifest.permission.POST_NOTIFICATIONS,
+            Manifest.permission.SEND_SMS
         )
         required.forEach {
             if (ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED)

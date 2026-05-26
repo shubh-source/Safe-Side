@@ -1,9 +1,14 @@
 package com.safesignal.service
 
+import android.Manifest
 import android.app.*
 import android.content.*
+import android.content.pm.PackageManager
 import android.os.*
+import android.telephony.SmsManager
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
+import com.google.android.gms.location.LocationServices
 import com.safesignal.R
 import com.safesignal.SafeSignalApp
 import com.safesignal.SosBlinkActivity
@@ -45,7 +50,7 @@ class PowerButtonService : Service() {
             addAction(Intent.ACTION_SCREEN_OFF)
             addAction(Intent.ACTION_SCREEN_ON)
         }
-        registerReceiver(screenReceiver, filter)
+        ContextCompat.registerReceiver(this, screenReceiver, filter, ContextCompat.RECEIVER_EXPORTED)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int =
@@ -75,6 +80,48 @@ class PowerButtonService : Service() {
         // 3. Start location streaming
         val locIntent = Intent(this, LocationService::class.java)
         startForegroundService(locIntent)
+
+        // 4. Send Offline Backup SMS Alert
+        sendOfflineSmsAlert(partnerNumber)
+    }
+
+    private fun sendOfflineSmsAlert(partnerNumber: String) {
+        if (partnerNumber.isBlank()) return
+
+        val fusedClient = LocationServices.getFusedLocationProviderClient(this)
+        val hasFine = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        val hasCoarse = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+
+        if (hasFine || hasCoarse) {
+            try {
+                fusedClient.lastLocation.addOnSuccessListener { loc ->
+                    val lat = loc?.latitude ?: 0.0
+                    val lng = loc?.longitude ?: 0.0
+                    sendSms(partnerNumber, lat, lng)
+                }.addOnFailureListener {
+                    sendSms(partnerNumber, 0.0, 0.0)
+                }
+            } catch (e: SecurityException) {
+                sendSms(partnerNumber, 0.0, 0.0)
+            }
+        } else {
+            sendSms(partnerNumber, 0.0, 0.0)
+        }
+    }
+
+    private fun sendSms(partnerNumber: String, lat: Double, lng: Double) {
+        try {
+            val message = "[SafeSignal-SOS] EMERGENCY ALERT! I need help immediately. My location: https://maps.google.com/?q=$lat,$lng"
+            val smsManager = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                getSystemService(SmsManager::class.java)
+            } else {
+                @Suppress("DEPRECATION")
+                SmsManager.getDefault()
+            }
+            smsManager.sendTextMessage(partnerNumber, null, message, null, null)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     // ── Foreground notification (minimal / silent) ────────────────────────────
